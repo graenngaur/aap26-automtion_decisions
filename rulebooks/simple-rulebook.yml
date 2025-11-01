@@ -1,0 +1,16 @@
+---
+- name: Simple Example Rulebook
+  hosts: all
+  sources:
+    - name: listen for alerts
+      ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+
+  rules:
+    - name: Handle alert event
+      condition: event.payload.alert == "high"
+      action:
+        run_job_template:
+          name: "simple-debug"
+          organization: "Dworp"
