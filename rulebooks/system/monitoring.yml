@@ -1,0 +1,15 @@
+---
+- name: Server Health Monitoring
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5001
+
+  rules:
+    - name: High CPU usage
+      condition: event.payload.metric == "cpu" and event.payload.value > 90
+      action:
+        run_job_template:
+          name: "999-adis-server-alert"
+          organization: "Dworp"
