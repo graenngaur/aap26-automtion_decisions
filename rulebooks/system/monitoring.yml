@@ -12,5 +12,5 @@
       condition: event.payload.alert == "high"
       action:
         run_job_template:
-          name: "999-adis-server-alert"
+          name: "simple-debug"
           organization: "Dworp"
