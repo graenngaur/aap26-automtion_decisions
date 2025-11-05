@@ -8,7 +8,8 @@
 
   rules:
     - name: High CPU usage
-      condition: event.payload.metric == "cpu" and event.payload.value > 90
+      #condition: event.payload.metric == "cpu" and event.payload.value > 90
+      condition: event.payload.alert == "high"
       action:
         run_job_template:
           name: "999-adis-server-alert"
