@@ -1,9 +1,13 @@
 ---
-- name: Debug Playbook
+- name: EDA testing - eenvoudig debug alert
   hosts: localhost
   gather_facts: false
   
   tasks:
-    - name: Print event details
+    - name: Print success boodschap
       ansible.builtin.debug:
-        msg: "Event triggered: {{ ansible_eda.event }}"
+        msg: "EDA rulebook connectie werkt 100% ...."
+    
+    - name: Log tijd
+      ansible.builtin.debug:
+        msg: "Uitgevoerd op {{ lookup('pipe', 'date') }}"
